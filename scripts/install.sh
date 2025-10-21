@@ -39,8 +39,11 @@ else
   log "SDKMAN! already present in $SDKMAN_DIR"
 fi
 
-# shellcheck source=/dev/null
+# shellcheck disable=SC1090
+# SDKMAN! init script expects ZSH_VERSION when running under zsh; temporarily relax nounset.
+set +u
 source "$SDKMAN_DIR/bin/sdkman-init.sh"
+set -u
 
 export SDKMAN_NON_INTERACTIVE=1
 
