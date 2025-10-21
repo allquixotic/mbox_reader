@@ -6,7 +6,13 @@ Kotlin/Swing mailbox inspector for `.mbox` archives. GUI launches by default and
 
 > ⚠️ Review the install script before running if you have any concerns.
 
-macOS / Linux:
+macOS (zsh is required by SDKMAN! on macOS):
+
+```zsh
+curl -fsSL https://raw.githubusercontent.com/allquixotic/mbox_reader/main/scripts/install.sh | zsh
+```
+
+Linux (bash):
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/allquixotic/mbox_reader/main/scripts/install.sh | bash
