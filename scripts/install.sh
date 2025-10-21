@@ -83,12 +83,13 @@ set -euo pipefail
 SDKMAN_DIR="\${SDKMAN_DIR:-$SDKMAN_DIR}"
 JAVA_HOME="\$SDKMAN_DIR/candidates/java/25-tem"
 KOTLIN_HOME="\$SDKMAN_DIR/candidates/kotlin/2.2.20"
-if [ ! -x "\$KOTLIN_HOME/bin/kotlin" ]; then
+if [ ! -x "\$KOTLIN_HOME/bin/kotlinc" ]; then
   echo "mbox-reader: Kotlin 2.2.20 is not installed. Re-run the installer." >&2
   exit 1
 fi
 export JAVA_HOME
-exec "\$KOTLIN_HOME/bin/kotlin" -script "$SCRIPT_DEST" "\$@"
+export PATH="\$JAVA_HOME/bin:\$PATH"
+exec "\$KOTLIN_HOME/bin/kotlinc" -script "$SCRIPT_DEST" "\$@"
 EOF
 
 chmod 755 "$SHIM_PATH"

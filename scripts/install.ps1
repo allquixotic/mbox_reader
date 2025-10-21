@@ -98,7 +98,7 @@ set "INSTALL_ROOT=$InstallRoot"
 set "SCRIPT_PATH=$ScriptPath"
 set "JAVA_HOME=%INSTALL_ROOT%\runtime\temurin-25"
 set "KOTLIN_HOME=%INSTALL_ROOT%\runtime\kotlin-$KotlinVersion"
-if not exist "%KOTLIN_HOME%\bin\kotlin.bat" (
+if not exist "%KOTLIN_HOME%\bin\kotlinc.bat" (
   echo mbox-reader: Kotlin runtime is missing. Re-run the installer. 1>&2
   exit /b 1
 )
@@ -107,7 +107,7 @@ if not exist "%JAVA_HOME%\bin\java.exe" (
   exit /b 1
 )
 set "PATH=%JAVA_HOME%\bin;%PATH%"
-"%KOTLIN_HOME%\bin\kotlin.bat" -script "%SCRIPT_PATH%" %*
+"%KOTLIN_HOME%\bin\kotlinc.bat" -script "%SCRIPT_PATH%" %*
 "@
 
     Set-Content -Path $ShimPath -Value $shimContent -Encoding ASCII
